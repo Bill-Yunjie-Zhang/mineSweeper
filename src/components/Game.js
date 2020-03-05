@@ -290,8 +290,10 @@ class Game extends React.Component {
                 document.getElementById(num.toString()).style.color = "red"
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
                 document.getElementById("winOrLose").innerHTML = "You lost! Stepped on a bomb! Click to restart"
+                document.getElementById("cover").style.height = "484px"
             } else if (disabledBomb && this.state.squareTaken[arr[0]][arr[1]] !== "X") {
                 document.getElementById("winOrLose").innerHTML = "You lost! This is not a bomb! Click to restart"
+                document.getElementById("cover").style.height = "484px"
             }
         }
     }
@@ -378,6 +380,7 @@ class Game extends React.Component {
                 <button id="winOrLose" onClick={this.refresh} style={{ textAlign: "center", width: "900px", height: "60px", fontSize: "30px", border: "0px", backgroundColor: "#1865f2", color: "#ffffff" }}>Restart</button>
             </div>
             <div>
+                <div id="cover" style={{position: "absolute", height: "0px", width: "904px", backgroundColor: "transparent"}}></div>
                 <div style={style}>
                     {this.createBoxes()}
                 </div>
