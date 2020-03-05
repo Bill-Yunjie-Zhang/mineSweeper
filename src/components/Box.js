@@ -31,7 +31,7 @@ class Box extends React.Component {
                 this.props.open(this.setId(this.props.id), false)
                 this.props.resetNum()
                 this.props.forceUpdateHandler()
-                console.log(this.props.gameLog)
+                // console.log(this.props.gameLog)
             }}>{this.props.gameLog[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]]}</button>
         )
     }

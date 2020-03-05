@@ -223,7 +223,7 @@ class Game extends React.Component {
     }
 
     checkGame = (arr) => {
-        console.log("doing")
+        // console.log("doing")
         for (let jj = 1; jj < arr.length - 1; jj++) {
             for (let kk = 1; kk < arr[jj].length - 1; kk++) {
                 if (arr[jj][kk] === "X") {
@@ -277,7 +277,7 @@ class Game extends React.Component {
             if (this.state.gameLog[arr[0]][arr[1]] === "") {
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
                 if (this.state.squareTaken[arr[0]][arr[1]] === 0) {
-                    console.log("DoingOpenAround")
+                    // console.log("DoingOpenAround")
                     this.openAround(arr)
                 }
             }
@@ -285,63 +285,63 @@ class Game extends React.Component {
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
             } else if (this.state.squareTaken[arr[0]][arr[1]] === "X") {
                 let num = arr[0] * 30 + arr[1]
-                console.log(num)
-                console.log(num.toString)
+                // console.log(num)
+                // console.log(num.toString)
                 document.getElementById(num.toString()).style.color = "red"
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
-                document.getElementById("winOrLose").innerHTML = "You lost! Stepped on a bomb"
+                document.getElementById("winOrLose").innerHTML = "You lost! Stepped on a bomb! Click to restart"
             } else if (disabledBomb && this.state.squareTaken[arr[0]][arr[1]] !== "X") {
-                document.getElementById("winOrLose").innerHTML = "You lost! This is not a bomb"
+                document.getElementById("winOrLose").innerHTML = "You lost! This is not a bomb! Click to restart"
             }
         }
     }
 
     openAround = (arr) => {
         if (this.state.squareTaken[arr[0] - 1] || this.state.squareTaken[arr[0] - 1] === 0) {
-            console.log("top row", this.state.squareTaken[arr[0] - 1], "array: ", arr, "top left: ", this.state.squareTaken[arr[0] - 1][arr[1] - 1])
+            // console.log("top row", this.state.squareTaken[arr[0] - 1], "array: ", arr, "top left: ", this.state.squareTaken[arr[0] - 1][arr[1] - 1])
             if (this.state.squareTaken[arr[0] - 1][arr[1] - 1] || this.state.squareTaken[arr[0] - 1][arr[1] - 1] === 0) {
-                console.log("DoingOpenTopLeft")
+                // console.log("DoingOpenTopLeft")
                 this.open([arr[0] - 1, arr[1] - 1])
             }
-            console.log("top row", this.state.squareTaken[arr[0] - 1], "array: ", arr, "top: ", this.state.squareTaken[arr[0] - 1][arr[1]])
+            // console.log("top row", this.state.squareTaken[arr[0] - 1], "array: ", arr, "top: ", this.state.squareTaken[arr[0] - 1][arr[1]])
             if (this.state.squareTaken[arr[0] - 1][arr[1]] || this.state.squareTaken[arr[0] - 1][arr[1]] === 0) {
-                console.log("DoingOpenTop")
+                // console.log("DoingOpenTop")
                 this.open([arr[0] - 1, arr[1]])
             }
-            console.log("top row", this.state.squareTaken[arr[0] - 1], "array: ", arr, "top right: ", this.state.squareTaken[arr[0] - 1][arr[1] + 1])
+            // console.log("top row", this.state.squareTaken[arr[0] - 1], "array: ", arr, "top right: ", this.state.squareTaken[arr[0] - 1][arr[1] + 1])
             if (this.state.squareTaken[arr[0] - 1][arr[1] + 1] || this.state.squareTaken[arr[0] - 1][arr[1] + 1] === 0) {
-                console.log("DoingOpenTopRight")
+                // console.log("DoingOpenTopRight")
                 this.open([arr[0] - 1, arr[1] + 1])
             }
         }
 
         if (this.state.squareTaken[arr[0]] || this.state.squareTaken[arr[0] - 1] === 0) {
-            console.log("this row: ", this.state.squareTaken[arr[0]], "array: ", arr, "left", this.state.squareTaken[arr[0]][arr[1] - 1])
+            // console.log("this row: ", this.state.squareTaken[arr[0]], "array: ", arr, "left", this.state.squareTaken[arr[0]][arr[1] - 1])
             if (this.state.squareTaken[arr[0]][arr[1] - 1] || this.state.squareTaken[arr[0]][arr[1] - 1] === 0) {
-                console.log("DoingOpenLeft")
+                // console.log("DoingOpenLeft")
                 this.open([arr[0], arr[1] - 1])
             }
-            console.log("this row: ", this.state.squareTaken[arr[0]], "array: ", arr, "right: ", this.state.squareTaken[arr[0]][arr[1] + 1])
+            // console.log("this row: ", this.state.squareTaken[arr[0]], "array: ", arr, "right: ", this.state.squareTaken[arr[0]][arr[1] + 1])
             if (this.state.squareTaken[arr[0]][arr[1] + 1] || this.state.squareTaken[arr[0]][arr[1] + 1] === 0) {
-                console.log("DoingOpenRight")
+                // console.log("DoingOpenRight")
                 this.open([arr[0], arr[1] + 1])
             }
         }
 
         if (this.state.squareTaken[arr[0] + 1] || this.state.squareTaken[arr[0] + 1] === 0) {
-            console.log("bottom row", this.state.squareTaken[arr[0] + 1], "array: ", arr, "bottom left: ", this.state.squareTaken[arr[0] + 1][arr[1] - 1])
+            // console.log("bottom row", this.state.squareTaken[arr[0] + 1], "array: ", arr, "bottom left: ", this.state.squareTaken[arr[0] + 1][arr[1] - 1])
             if (this.state.squareTaken[arr[0] + 1][arr[1] - 1] || this.state.squareTaken[arr[0] + 1][arr[1] - 1] === 0) {
-                console.log("DoingOpenBottomLeft")
+                // console.log("DoingOpenBottomLeft")
                 this.open([arr[0] + 1, arr[1] - 1])
             }
-            console.log("bottom row", this.state.squareTaken[arr[0] + 1], "array: ", arr, "bottom: ", this.state.squareTaken[arr[0] + 1][arr[1]])
+            // console.log("bottom row", this.state.squareTaken[arr[0] + 1], "array: ", arr, "bottom: ", this.state.squareTaken[arr[0] + 1][arr[1]])
             if (this.state.squareTaken[arr[0] + 1][arr[1]] || this.state.squareTaken[arr[0] + 1][arr[1]] === 0) {
-                console.log("DoingOpenBottom")
+                // console.log("DoingOpenBottom")
                 this.open([arr[0] + 1, arr[1]])
             }
-            console.log("bottom row", this.state.squareTaken[arr[0] + 1], "array: ", arr, "bottom right: ", this.state.squareTaken[arr[0] + 1][arr[1] + 1])
+            // console.log("bottom row", this.state.squareTaken[arr[0] + 1], "array: ", arr, "bottom right: ", this.state.squareTaken[arr[0] + 1][arr[1] + 1])
             if (this.state.squareTaken[arr[0] + 1][arr[1] + 1] || this.state.squareTaken[arr[0] + 1][arr[1] + 1] === 0) {
-                console.log("DoingOpenBottomRight")
+                // console.log("DoingOpenBottomRight")
                 this.open([arr[0] + 1, arr[1] + 1])
             }
         }
@@ -370,16 +370,15 @@ class Game extends React.Component {
     }
 
     render() {
-        console.log(this.state.squareTaken)
-        console.log(this.state.gameLog)
+        // console.log(this.state.squareTaken)
+        // console.log(this.state.gameLog)
         return <div style={{ width: "900px", margin: "auto" }}>
             <h1 style={{textAlign: "center"}}>Clearing the land mines!</h1>
+            <div style={{ width: "900px", margin: "auto", marginBottom: "30px" }}>
+                <button id="winOrLose" onClick={this.refresh} style={{ textAlign: "center", width: "900px", height: "60px", fontSize: "30px", border: "0px", backgroundColor: "#1865f2", color: "#ffffff" }}>Restart</button>
+            </div>
             <div style={style}>
                 {this.createBoxes()}
-            </div>
-            <div style={{ width: "400px", margin: "auto", marginTop: "20px" }}>
-                <h1 id="winOrLose" style={{ color: "red" }}></h1>
-                <button onClick={this.refresh} style={{ textAlign: "center", width: "400px", height: "60px", fontSize: "30px", border: "0px", backgroundColor: "#1865f2", color: "#ffffff" }}>Restart</button>
             </div>
         </div>
     }
