@@ -14,7 +14,7 @@ function App() {
           <h1>Manual:</h1>
           <ul>
             <li>Left click to step onto the picked spot</li>
-            <li>Right click to neutralize and mark a land mine</li>
+            <li>Right click to neutralize and mark a land mine (for mobiles or touch screens, long click)</li>
           </ul>
           <h1>Rules:</h1>
           <ul>
