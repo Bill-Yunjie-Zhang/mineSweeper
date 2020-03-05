@@ -112,7 +112,7 @@ class Box extends React.Component {
             }
         }
         return (
-            <button class={"Buttons"} style={this.state.style} id={this.props.id} onContextMenu={() => {
+            <button style={this.state.style} id={this.props.id} onContextMenu={() => {
                 this.props.open(this.setId(this.props.id), true)
                 this.props.resetNum()
                 this.props.forceUpdateHandler()

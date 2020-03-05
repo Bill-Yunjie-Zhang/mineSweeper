@@ -102,24 +102,24 @@ class Game extends React.Component {
                 }
                 arr[oo][0] = count
             }
-            if (arr[oo][0] === "") {
+            if (arr[oo][arr[oo].length - 1] === "") {
                 let count = 0
                 if (arr[oo + 1][arr[oo].length - 1] === "X") {
-                    count++
-                }
-                if (arr[oo - 1][arr[oo].length] === "X") {
-                    count++
-                }
-                if (arr[oo + 1][arr[oo].length] === "X") {
                     count++
                 }
                 if (arr[oo - 1][arr[oo].length - 1] === "X") {
                     count++
                 }
-                if (arr[oo][arr[oo].length - 1] === "X") {
+                if (arr[oo + 1][arr[oo].length - 2] === "X") {
                     count++
                 }
-                arr[oo][0] = count
+                if (arr[oo - 1][arr[oo].length - 2] === "X") {
+                    count++
+                }
+                if (arr[oo][arr[oo].length - 2] === "X") {
+                    count++
+                }
+                arr[oo][arr[oo].length - 1] = count
             }
         }
 
@@ -179,18 +179,18 @@ class Game extends React.Component {
             arr[0][0] = count
         }
 
-        if (arr[0][15] === "") {
+        if (arr[0][29] === "") {
             let count = 0
-            if (arr[0][14] === "X") {
+            if (arr[0][28] === "X") {
                 count++
             }
-            if (arr[1][15] === "X") {
+            if (arr[1][29] === "X") {
                 count++
             }
-            if (arr[1][14] === "X") {
+            if (arr[1][28] === "X") {
                 count++
             }
-            arr[0][15] = count
+            arr[0][29] = count
         }
 
         if (arr[15][0] === "") {
@@ -207,18 +207,18 @@ class Game extends React.Component {
             arr[15][0] = count
         }
 
-        if (arr[15][15] === "") {
+        if (arr[15][29] === "") {
             let count = 0
-            if (arr[15][14] === "X") {
+            if (arr[15][28] === "X") {
                 count++
             }
-            if (arr[14][14] === "X") {
+            if (arr[14][28] === "X") {
                 count++
             }
-            if (arr[14][15] === "X") {
+            if (arr[14][29] === "X") {
                 count++
             }
-            arr[15][15] = count
+            arr[15][29] = count
         }
     }
 
@@ -272,7 +272,7 @@ class Game extends React.Component {
     }
 
     open = (arr, disabledBomb) => {
-        // console.log(arr)
+        console.log(arr)
         if (arr) {
             if (this.state.gameLog[arr[0]][arr[1]] === "") {
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
@@ -370,15 +370,17 @@ class Game extends React.Component {
     }
 
     render() {
-        // console.log(this.state.squareTaken)
-        // console.log(this.state.gameLog)
+        console.log(this.state.squareTaken)
+        console.log(this.state.gameLog)
         return <div style={{ width: "900px", margin: "auto" }}>
-            <h1 style={{textAlign: "center"}}>Clearing the land mines!</h1>
+            <h1 style={{ textAlign: "center" }}>Clearing the land mines!</h1>
             <div style={{ width: "900px", margin: "auto", marginBottom: "30px" }}>
                 <button id="winOrLose" onClick={this.refresh} style={{ textAlign: "center", width: "900px", height: "60px", fontSize: "30px", border: "0px", backgroundColor: "#1865f2", color: "#ffffff" }}>Restart</button>
             </div>
-            <div style={style}>
-                {this.createBoxes()}
+            <div>
+                <div style={style}>
+                    {this.createBoxes()}
+                </div>
             </div>
         </div>
     }
