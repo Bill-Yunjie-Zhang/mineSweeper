@@ -27,6 +27,7 @@ class Box extends React.Component {
                 this.props.open(this.setId(this.props.id))
                 this.setState({ value: this.props.squareTaken[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]] })
                 this.props.resetNum()
+                this.props.forceUpdateHandler()
                 console.log(this.props.gameLog)
             }}>{this.props.gameLog[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]]}</button>
         )
