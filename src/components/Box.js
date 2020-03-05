@@ -7,10 +7,28 @@ const style = {
     verticalAlign: "top"
 }
 
-class Box extends React.Component{
-    render () { 
+class Box extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            value: ""
+        }
+    }
+    setId = (num) => {
+        let arr = [0, 0]
+        arr = [Math.floor(num / 30), num % 30]
+        return arr
+    }
+
+    render() {
         return (
-            <button style={style}></button>
+            <button style={style} id={this.props.id} onClick={() => {
+                this.props.open(this.setId(this.props.id))
+                this.setState({ value: this.props.squareTaken[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]] })
+                this.props.resetNum()
+                console.log(this.props.gameLog)
+            }}>{this.props.gameLog[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]]}</button>
         )
     }
 }
