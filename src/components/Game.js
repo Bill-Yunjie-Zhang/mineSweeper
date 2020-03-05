@@ -271,7 +271,7 @@ class Game extends React.Component {
         return true
     }
 
-    open = (arr) => {
+    open = (arr, disabledBomb) => {
         // console.log(arr)
         if(arr){
             if(this.state.gameLog[arr[0]][arr[1]] === ""){
@@ -280,6 +280,20 @@ class Game extends React.Component {
                     console.log("DoingOpenAround")
                     this.openAround(arr)
                 }
+            } 
+            if(disabledBomb && this.state.squareTaken[arr[0]][arr[1]] === "X"){
+                this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
+            } else if(this.state.squareTaken[arr[0]][arr[1]] === "X"){
+                let num = arr[0] * 30 + arr[1]
+                console.log(num)
+                console.log(num.toString)
+                document.getElementById(num.toString()).style.color = "red"
+                this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
+                document.getElementById("winOrLose").innerHTML = "You lost! Stepped on a bomb"
+                document.getElementsByClassName("buttons").disabled = true
+            } else if(disabledBomb && this.state.squareTaken[arr[0]][arr[1]] !== "X"){
+                document.getElementById("winOrLose").innerHTML = "You lost! This is not a bomb"
+                document.getElementsByClassName("buttons").disabled = true
             }
         }
     }

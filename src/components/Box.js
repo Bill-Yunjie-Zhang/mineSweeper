@@ -23,9 +23,12 @@ class Box extends React.Component {
 
     render() {
         return (
-            <button style={style} id={this.props.id} onClick={() => {
-                this.props.open(this.setId(this.props.id))
-                this.setState({ value: this.props.squareTaken[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]] })
+            <button class={"Buttons"} style={style} id={this.props.id} onContextMenu={() => {
+                this.props.open(this.setId(this.props.id), true)
+                this.props.resetNum()
+                this.props.forceUpdateHandler()
+            }} onClick={() => {
+                this.props.open(this.setId(this.props.id), false)
                 this.props.resetNum()
                 this.props.forceUpdateHandler()
                 console.log(this.props.gameLog)
