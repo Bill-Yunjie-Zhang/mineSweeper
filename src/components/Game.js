@@ -290,10 +290,8 @@ class Game extends React.Component {
                 document.getElementById(num.toString()).style.color = "red"
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
                 document.getElementById("winOrLose").innerHTML = "You lost! Stepped on a bomb"
-                document.getElementsByClassName("buttons").disabled = true
             } else if(disabledBomb && this.state.squareTaken[arr[0]][arr[1]] !== "X"){
                 document.getElementById("winOrLose").innerHTML = "You lost! This is not a bomb"
-                document.getElementsByClassName("buttons").disabled = true
             }
         }
     }
