@@ -24,7 +24,8 @@ class Game extends React.Component {
         this.state = {
             squareTaken: [["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]],
             gameLog: [["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]],
-            mines: 99         
+            mines: 99,
+            buttonText: "Restart"
         }
     }
 
@@ -289,16 +290,16 @@ class Game extends React.Component {
         // console.log(arr)
         if (arr) {
             if (this.state.gameLog === this.state.squareTaken) {
-                if (document.getElementById("winOrLose").innerHTML === "Restart") {
-                    document.getElementById("winOrLose").innerHTML = "Congradulations! You won!"
+                if (this.state.buttonText === "Restart") {
+                    this.state.buttonText = "Congradulations! You won!"
                 }
             }
             if (this.state.gameLog[arr[0]][arr[1]] === "" && (this.state.squareTaken[arr[0]][arr[1]] !== "X" || disabledBomb)) {
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
                 // console.log(this.state.gameLog, this.state.squareTaken)
                 if (this.checkEqual(this.state.gameLog, this.state.squareTaken)) {
-                    if (document.getElementById("winOrLose").innerHTML === "Restart") {
-                        document.getElementById("winOrLose").innerHTML = "Congradulations! You won!"
+                    if (this.state.buttonText === "Restart") {
+                        this.state.buttonText = "Congradulations! You won!"
                     }
                 }
                 if (this.state.squareTaken[arr[0]][arr[1]] === 0) {
@@ -316,8 +317,8 @@ class Game extends React.Component {
                 document.getElementById(num.toString()).style.color = "white"
                 document.getElementById(num.toString()).style.borderColor = "red"
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
-                if (document.getElementById("winOrLose").innerHTML === "Restart") {
-                    document.getElementById("winOrLose").innerHTML = "You lost! Stepped on a bomb! Click to restart"
+                if (this.state.buttonText === "Restart") {
+                    this.state.buttonText = "You lost! Stepped on a bomb! Click to restart"
                 }
                 this.openAll()
                 document.getElementById("cover").style.height = "484px"
@@ -326,8 +327,8 @@ class Game extends React.Component {
                 document.getElementById(num.toString()).style.backgroundColor = "red"
                 document.getElementById(num.toString()).style.color = "white"
                 document.getElementById(num.toString()).style.borderColor = "red"
-                if (document.getElementById("winOrLose").innerHTML === "Restart") {
-                    document.getElementById("winOrLose").innerHTML = "You lost! This is not a bomb! Click to restart"
+                if (this.state.buttonText === "Restart") {
+                    this.state.buttonText = "You lost! This is not a bomb! Click to restart"
                 }
                 this.openAll()
                 document.getElementById("cover").style.height = "484px"
@@ -424,9 +425,12 @@ class Game extends React.Component {
         return <div style={{ width: "900px", margin: "auto" }}>
             <h1 style={{ textAlign: "center", margin: "50px", fontSize: "50px"}}>Clearing the land mines!</h1>
             <div style={{ width: "900px", margin: "auto", marginBottom: "30px" }}>
-                <button id="winOrLose" onClick={this.refresh} style={{ textAlign: "center", width: "880px", height: "60px", fontSize: "30px", border: "0px", backgroundColor: "#1865f2", color: "#ffffff" }}>Restart</button>
-                <button onClick={this.openAll} style={{ float: "right", textAlign: "center", width: "20px", height: "60px", border: "0px", backgroundColor: "#1865f2" }}></button>
-                <Status mines={this.state.mines}></Status>
+                <button id="winOrLose" onClick={this.refresh} style={{ textAlign: "center", width: "880px", height: "60px", fontSize: "30px", border: "0px", backgroundColor: "#1865f2", color: "#ffffff" }}>{this.state.buttonText}</button>
+                <button onClick={ () => {
+                    this.openAll()
+                    this.state.mines = 0
+                }} style={{ float: "right", textAlign: "center", width: "20px", height: "60px", border: "0px", backgroundColor: "#1865f2" }}></button>
+                <Status mines={this.state.mines} buttonText={this.state.buttonText}></Status>
             </div>
             <div>
                 <div id="cover" style={{ position: "absolute", height: "0px", width: "904px", backgroundColor: "transparent" }}></div>

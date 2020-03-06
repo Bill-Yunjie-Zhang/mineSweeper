@@ -5,12 +5,12 @@ class Status extends React.Component {
         super(props)
 
         this.state = {
-            seconds: 0
+            seconds: 0,
         }
     }
 
     tick = () => {
-        if(this.props.mines !== 0){
+        if(this.props.mines !== 0 && this.props.buttonText === "Restart"){
             this.setState(state => ({
                 seconds: state.seconds + 1
             }))        
