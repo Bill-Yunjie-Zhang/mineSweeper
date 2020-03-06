@@ -116,6 +116,7 @@ class Box extends React.Component {
                 event.preventDefault()
                 if(this.props.gameLog[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]] === ""){
                     this.props.open(this.setId(this.props.id), true)
+                    this.props.trackMines()
                     this.props.resetNum()
                     this.props.forceUpdateHandler()
                 }else if(this.props.gameLog[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]] && this.props.gameLog[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]] !== "X"){
