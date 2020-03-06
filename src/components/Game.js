@@ -274,15 +274,15 @@ class Game extends React.Component {
     open = (arr, disabledBomb) => {
         // console.log(arr)
         if (arr) {
-            if(this.state.gameLog === this.state.squareTaken && this.state.gameLog[arr[0]][arr[1]] !== "X"){
-                if(document.getElementById("winOrLose").innerHTML === "Restart"){
+            if (this.state.gameLog === this.state.squareTaken && this.state.gameLog[arr[0]][arr[1]] !== "X") {
+                if (document.getElementById("winOrLose").innerHTML === "Restart") {
                     document.getElementById("winOrLose").innerHTML = "Congradulations! You won!"
                 }
             }
             if (this.state.gameLog[arr[0]][arr[1]] === "") {
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
-                if(this.state.gameLog === this.state.squareTaken){
-                    if(document.getElementById("winOrLose").innerHTML === "Restart"){
+                if (this.state.gameLog === this.state.squareTaken) {
+                    if (document.getElementById("winOrLose").innerHTML === "Restart") {
                         document.getElementById("winOrLose").innerHTML = "Congradulations! You won!"
                     }
                 }
@@ -301,7 +301,7 @@ class Game extends React.Component {
                 document.getElementById(num.toString()).style.color = "white"
                 document.getElementById(num.toString()).style.borderColor = "red"
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
-                if(document.getElementById("winOrLose").innerHTML === "Restart"){
+                if (document.getElementById("winOrLose").innerHTML === "Restart") {
                     document.getElementById("winOrLose").innerHTML = "You lost! Stepped on a bomb! Click to restart"
                 }
                 this.openAll()
@@ -311,7 +311,7 @@ class Game extends React.Component {
                 document.getElementById(num.toString()).style.backgroundColor = "red"
                 document.getElementById(num.toString()).style.color = "white"
                 document.getElementById(num.toString()).style.borderColor = "red"
-                if(document.getElementById("winOrLose").innerHTML === "Restart"){
+                if (document.getElementById("winOrLose").innerHTML === "Restart") {
                     document.getElementById("winOrLose").innerHTML = "You lost! This is not a bomb! Click to restart"
                 }
                 this.openAll()
@@ -321,52 +321,53 @@ class Game extends React.Component {
     }
 
     openAround = (arr) => {
+        // console.log("Doing openAround")
         if (this.state.squareTaken[arr[0] - 1] || this.state.squareTaken[arr[0] - 1] === 0) {
             // console.log("top row", this.state.squareTaken[arr[0] - 1], "array: ", arr, "top left: ", this.state.squareTaken[arr[0] - 1][arr[1] - 1])
-            if (this.state.squareTaken[arr[0] - 1][arr[1] - 1] || this.state.squareTaken[arr[0] - 1][arr[1] - 1] === 0) {
+            if ((this.state.squareTaken[arr[0] - 1][arr[1] - 1] || this.state.squareTaken[arr[0] - 1][arr[1] - 1] === 0) && this.state.gameLog[arr[0] - 1][arr[1] - 1] !== "X") {
                 // console.log("DoingOpenTopLeft")
-                this.open([arr[0] - 1, arr[1] - 1])
+                this.open([arr[0] - 1, arr[1] - 1], false)
             }
             // console.log("top row", this.state.squareTaken[arr[0] - 1], "array: ", arr, "top: ", this.state.squareTaken[arr[0] - 1][arr[1]])
-            if (this.state.squareTaken[arr[0] - 1][arr[1]] || this.state.squareTaken[arr[0] - 1][arr[1]] === 0) {
+            if ((this.state.squareTaken[arr[0] - 1][arr[1]] || this.state.squareTaken[arr[0] - 1][arr[1]] === 0) && this.state.gameLog[arr[0] - 1][arr[1]] !== "X") {
                 // console.log("DoingOpenTop")
-                this.open([arr[0] - 1, arr[1]])
+                this.open([arr[0] - 1, arr[1]], false)
             }
             // console.log("top row", this.state.squareTaken[arr[0] - 1], "array: ", arr, "top right: ", this.state.squareTaken[arr[0] - 1][arr[1] + 1])
-            if (this.state.squareTaken[arr[0] - 1][arr[1] + 1] || this.state.squareTaken[arr[0] - 1][arr[1] + 1] === 0) {
+            if ((this.state.squareTaken[arr[0] - 1][arr[1] + 1] || this.state.squareTaken[arr[0] - 1][arr[1] + 1] === 0) && this.state.gameLog[arr[0] - 1][arr[1] + 1] !== "X") {
                 // console.log("DoingOpenTopRight")
-                this.open([arr[0] - 1, arr[1] + 1])
+                this.open([arr[0] - 1, arr[1] + 1], false)
             }
         }
 
         if (this.state.squareTaken[arr[0]] || this.state.squareTaken[arr[0] - 1] === 0) {
             // console.log("this row: ", this.state.squareTaken[arr[0]], "array: ", arr, "left", this.state.squareTaken[arr[0]][arr[1] - 1])
-            if (this.state.squareTaken[arr[0]][arr[1] - 1] || this.state.squareTaken[arr[0]][arr[1] - 1] === 0) {
+            if ((this.state.squareTaken[arr[0]][arr[1] - 1] || this.state.squareTaken[arr[0]][arr[1] - 1] === 0) && this.state.gameLog[arr[0]][arr[1] - 1] !== "X") {
                 // console.log("DoingOpenLeft")
-                this.open([arr[0], arr[1] - 1])
+                this.open([arr[0], arr[1] - 1], false)
             }
             // console.log("this row: ", this.state.squareTaken[arr[0]], "array: ", arr, "right: ", this.state.squareTaken[arr[0]][arr[1] + 1])
-            if (this.state.squareTaken[arr[0]][arr[1] + 1] || this.state.squareTaken[arr[0]][arr[1] + 1] === 0) {
+            if ((this.state.squareTaken[arr[0]][arr[1] + 1] || this.state.squareTaken[arr[0]][arr[1] + 1] === 0) && this.state.gameLog[arr[0]][arr[1] + 1] !== "X") {
                 // console.log("DoingOpenRight")
-                this.open([arr[0], arr[1] + 1])
+                this.open([arr[0], arr[1] + 1], false)
             }
         }
 
         if (this.state.squareTaken[arr[0] + 1] || this.state.squareTaken[arr[0] + 1] === 0) {
             // console.log("bottom row", this.state.squareTaken[arr[0] + 1], "array: ", arr, "bottom left: ", this.state.squareTaken[arr[0] + 1][arr[1] - 1])
-            if (this.state.squareTaken[arr[0] + 1][arr[1] - 1] || this.state.squareTaken[arr[0] + 1][arr[1] - 1] === 0) {
+            if ((this.state.squareTaken[arr[0] + 1][arr[1] - 1] || this.state.squareTaken[arr[0] + 1][arr[1] - 1] === 0) && this.state.gameLog[arr[0] + 1][arr[1] - 1] !== "X") {
                 // console.log("DoingOpenBottomLeft")
-                this.open([arr[0] + 1, arr[1] - 1])
+                this.open([arr[0] + 1, arr[1] - 1], false)
             }
             // console.log("bottom row", this.state.squareTaken[arr[0] + 1], "array: ", arr, "bottom: ", this.state.squareTaken[arr[0] + 1][arr[1]])
-            if (this.state.squareTaken[arr[0] + 1][arr[1]] || this.state.squareTaken[arr[0] + 1][arr[1]] === 0) {
+            if ((this.state.squareTaken[arr[0] + 1][arr[1]] || this.state.squareTaken[arr[0] + 1][arr[1]] === 0) && this.state.gameLog[arr[0] + 1][arr[1]] !== "X") {
                 // console.log("DoingOpenBottom")
-                this.open([arr[0] + 1, arr[1]])
+                this.open([arr[0] + 1, arr[1]], false)
             }
             // console.log("bottom row", this.state.squareTaken[arr[0] + 1], "array: ", arr, "bottom right: ", this.state.squareTaken[arr[0] + 1][arr[1] + 1])
-            if (this.state.squareTaken[arr[0] + 1][arr[1] + 1] || this.state.squareTaken[arr[0] + 1][arr[1] + 1] === 0) {
+            if ((this.state.squareTaken[arr[0] + 1][arr[1] + 1] || this.state.squareTaken[arr[0] + 1][arr[1] + 1] === 0) && this.state.gameLog[arr[0] + 1][arr[1] + 1] !== "X") {
                 // console.log("DoingOpenBottomRight")
-                this.open([arr[0] + 1, arr[1] + 1])
+                this.open([arr[0] + 1, arr[1] + 1], false)
             }
         }
     }
@@ -377,7 +378,7 @@ class Game extends React.Component {
 
     createBox = () => {
         num += 1
-        return <Box id={num} open={this.open} squareTaken={this.state.squareTaken} resetNum={this.resetNum} gameLog={this.state.gameLog} forceUpdateHandler={this.forceUpdateHandler}></Box>
+        return <Box id={num} open={this.open} openAround={this.openAround} squareTaken={this.state.squareTaken} resetNum={this.resetNum} gameLog={this.state.gameLog} forceUpdateHandler={this.forceUpdateHandler}></Box>
     }
 
     resetNum = () => {
@@ -398,17 +399,17 @@ class Game extends React.Component {
     }
 
     render() {
-        console.log(this.state.squareTaken)
+        // console.log(this.state.squareTaken)
         // console.log(this.state.gameLog)
         // console.log(this.openAll)
         return <div style={{ width: "900px", margin: "auto" }}>
             <h1 style={{ textAlign: "center" }}>Clearing the land mines!</h1>
             <div style={{ width: "900px", margin: "auto", marginBottom: "30px" }}>
                 <button id="winOrLose" onClick={this.refresh} style={{ textAlign: "center", width: "880px", height: "60px", fontSize: "30px", border: "0px", backgroundColor: "#1865f2", color: "#ffffff" }}>Restart</button>
-                <button onClick={this.openAll} style={{float: "right", textAlign: "center", width: "20px", height: "60px", border: "0px", backgroundColor: "#1865f2"}}></button>
+                <button onClick={this.openAll} style={{ float: "right", textAlign: "center", width: "20px", height: "60px", border: "0px", backgroundColor: "#1865f2" }}></button>
             </div>
             <div>
-                <div id="cover" style={{position: "absolute", height: "0px", width: "904px", backgroundColor: "transparent"}}></div>
+                <div id="cover" style={{ position: "absolute", height: "0px", width: "904px", backgroundColor: "transparent" }}></div>
                 <div style={style}>
                     {this.createBoxes()}
                 </div>

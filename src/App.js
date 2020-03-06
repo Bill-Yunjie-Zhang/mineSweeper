@@ -15,6 +15,7 @@ function App() {
           <ul>
             <li>Left click to step onto the picked spot</li>
             <li>Right click to neutralize and mark a land mine (for mobiles or touch screens, long click)</li>
+            <li>Click on already opened spot to open all of the surronding unneutralized area</li>
           </ul>
           <h1>Rules:</h1>
           <ul>

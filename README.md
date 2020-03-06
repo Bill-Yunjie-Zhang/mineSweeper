@@ -6,6 +6,8 @@
 ## Manual:
 1. Left click to step onto the picked spot
 2. Right click to neutralize and mark a land mine (for mobiles or touch screens, long click)
+3. Click on already opened spot to open all of the surronding unneutralized area
+
 
 ## Rules:
 1. If you step onto a mine land mine, you lose

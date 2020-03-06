@@ -125,6 +125,10 @@ class Box extends React.Component {
                     this.props.resetNum()
                     this.props.forceUpdateHandler()
                     // console.log(this.props.gameLog)
+                }else if(this.props.gameLog[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]] && this.props.gameLog[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]] !== "X"){
+                    this.props.openAround(this.setId(this.props.id))
+                    this.props.resetNum()
+                    this.props.forceUpdateHandler()
                 }
             }}>{this.props.gameLog[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]]}</button>
         )
