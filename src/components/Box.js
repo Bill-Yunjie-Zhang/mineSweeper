@@ -112,7 +112,8 @@ class Box extends React.Component {
             }
         }
         return (
-            <button style={this.state.style} id={this.props.id} onContextMenu={() => {
+            <button style={this.state.style} id={this.props.id} onContextMenu={(event) => {
+                event.preventDefault()
                 if(this.props.gameLog[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]] === ""){
                     this.props.open(this.setId(this.props.id), true)
                     this.props.resetNum()

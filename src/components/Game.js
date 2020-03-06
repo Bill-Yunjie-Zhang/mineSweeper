@@ -272,10 +272,20 @@ class Game extends React.Component {
     }
 
     open = (arr, disabledBomb) => {
-        console.log(arr)
+        // console.log(arr)
         if (arr) {
+            if(this.state.gameLog === this.state.squareTaken && this.state.gameLog[arr[0]][arr[1]] !== "X"){
+                if(document.getElementById("winOrLose").innerHTML === "Restart"){
+                    document.getElementById("winOrLose").innerHTML = "Congradulations! You won!"
+                }
+            }
             if (this.state.gameLog[arr[0]][arr[1]] === "") {
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
+                if(this.state.gameLog === this.state.squareTaken){
+                    if(document.getElementById("winOrLose").innerHTML === "Restart"){
+                        document.getElementById("winOrLose").innerHTML = "Congradulations! You won!"
+                    }
+                }
                 if (this.state.squareTaken[arr[0]][arr[1]] === 0) {
                     // console.log("DoingOpenAround")
                     this.openAround(arr)
@@ -287,12 +297,24 @@ class Game extends React.Component {
                 let num = arr[0] * 30 + arr[1]
                 // console.log(num)
                 // console.log(num.toString)
-                document.getElementById(num.toString()).style.color = "red"
+                document.getElementById(num.toString()).style.backgroundColor = "red"
+                document.getElementById(num.toString()).style.color = "white"
+                document.getElementById(num.toString()).style.borderColor = "red"
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
-                document.getElementById("winOrLose").innerHTML = "You lost! Stepped on a bomb! Click to restart"
+                if(document.getElementById("winOrLose").innerHTML === "Restart"){
+                    document.getElementById("winOrLose").innerHTML = "You lost! Stepped on a bomb! Click to restart"
+                }
+                this.openAll()
                 document.getElementById("cover").style.height = "484px"
             } else if (disabledBomb && this.state.squareTaken[arr[0]][arr[1]] !== "X") {
-                document.getElementById("winOrLose").innerHTML = "You lost! This is not a bomb! Click to restart"
+                let num = arr[0] * 30 + arr[1]
+                document.getElementById(num.toString()).style.backgroundColor = "red"
+                document.getElementById(num.toString()).style.color = "white"
+                document.getElementById(num.toString()).style.borderColor = "red"
+                if(document.getElementById("winOrLose").innerHTML === "Restart"){
+                    document.getElementById("winOrLose").innerHTML = "You lost! This is not a bomb! Click to restart"
+                }
+                this.openAll()
                 document.getElementById("cover").style.height = "484px"
             }
         }
@@ -349,6 +371,10 @@ class Game extends React.Component {
         }
     }
 
+    openAll = () => {
+        this.state.gameLog = this.state.squareTaken
+    }
+
     createBox = () => {
         num += 1
         return <Box id={num} open={this.open} squareTaken={this.state.squareTaken} resetNum={this.resetNum} gameLog={this.state.gameLog} forceUpdateHandler={this.forceUpdateHandler}></Box>
@@ -373,11 +399,13 @@ class Game extends React.Component {
 
     render() {
         console.log(this.state.squareTaken)
-        console.log(this.state.gameLog)
+        // console.log(this.state.gameLog)
+        // console.log(this.openAll)
         return <div style={{ width: "900px", margin: "auto" }}>
             <h1 style={{ textAlign: "center" }}>Clearing the land mines!</h1>
             <div style={{ width: "900px", margin: "auto", marginBottom: "30px" }}>
-                <button id="winOrLose" onClick={this.refresh} style={{ textAlign: "center", width: "900px", height: "60px", fontSize: "30px", border: "0px", backgroundColor: "#1865f2", color: "#ffffff" }}>Restart</button>
+                <button id="winOrLose" onClick={this.refresh} style={{ textAlign: "center", width: "880px", height: "60px", fontSize: "30px", border: "0px", backgroundColor: "#1865f2", color: "#ffffff" }}>Restart</button>
+                <button onClick={this.openAll} style={{float: "right", textAlign: "center", width: "20px", height: "60px", border: "0px", backgroundColor: "#1865f2"}}></button>
             </div>
             <div>
                 <div id="cover" style={{position: "absolute", height: "0px", width: "904px", backgroundColor: "transparent"}}></div>
