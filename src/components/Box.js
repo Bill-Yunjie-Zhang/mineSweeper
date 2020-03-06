@@ -118,6 +118,10 @@ class Box extends React.Component {
                     this.props.open(this.setId(this.props.id), true)
                     this.props.resetNum()
                     this.props.forceUpdateHandler()
+                }else if(this.props.gameLog[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]] && this.props.gameLog[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]] !== "X"){
+                    this.props.openAround(this.setId(this.props.id))
+                    this.props.resetNum()
+                    this.props.forceUpdateHandler()
                 }
             }} onClick={() => {
                 if(this.props.gameLog[this.setId(this.props.id)[0]][this.setId(this.props.id)[1]] === ""){
