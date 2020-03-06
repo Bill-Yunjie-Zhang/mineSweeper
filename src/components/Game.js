@@ -271,17 +271,30 @@ class Game extends React.Component {
         return true
     }
 
+    checkEqual = (arr1, arr2) => {
+        let check = true
+        for(let cc = 0; cc < arr1.length; cc ++){
+            for(let dd = 0; dd< arr1[cc].length; dd ++){
+                if(arr1[cc][dd] !== arr2[cc][dd]){
+                    check = false
+                }
+            }
+        }
+        return check
+    }
+
     open = (arr, disabledBomb) => {
         // console.log(arr)
         if (arr) {
-            if (this.state.gameLog === this.state.squareTaken && this.state.gameLog[arr[0]][arr[1]] !== "X") {
+            if (this.state.gameLog === this.state.squareTaken) {
                 if (document.getElementById("winOrLose").innerHTML === "Restart") {
                     document.getElementById("winOrLose").innerHTML = "Congradulations! You won!"
                 }
             }
-            if (this.state.gameLog[arr[0]][arr[1]] === "") {
+            if (this.state.gameLog[arr[0]][arr[1]] === "" && (this.state.squareTaken[arr[0]][arr[1]] !== "X" || disabledBomb)) {
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
-                if (this.state.gameLog === this.state.squareTaken) {
+                // console.log(this.state.gameLog, this.state.squareTaken)
+                if (this.checkEqual(this.state.gameLog, this.state.squareTaken)) {
                     if (document.getElementById("winOrLose").innerHTML === "Restart") {
                         document.getElementById("winOrLose").innerHTML = "Congradulations! You won!"
                     }
