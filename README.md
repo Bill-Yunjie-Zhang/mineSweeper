@@ -1,4 +1,4 @@
-# https://bill-yunjie-zhang.github.io/clearingLandmines/
+# https://bill-yunjie-zhang.github.io/mineSweeper/
 
 ## Beginner Guide:
 1. Since Windows system doesn't have "Clearing land mines", one of my favorite games for killing time build in now, this is a travesty of mine build using React app.
