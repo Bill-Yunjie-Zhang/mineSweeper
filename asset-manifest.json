@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/clearingLandmines/static/js/main.01ab3b2c.chunk.js",
-    "main.js.map": "/clearingLandmines/static/js/main.01ab3b2c.chunk.js.map",
+    "main.js": "/clearingLandmines/static/js/main.7cc7a74d.chunk.js",
+    "main.js.map": "/clearingLandmines/static/js/main.7cc7a74d.chunk.js.map",
     "runtime-main.js": "/clearingLandmines/static/js/runtime-main.782cc7a9.js",
     "runtime-main.js.map": "/clearingLandmines/static/js/runtime-main.782cc7a9.js.map",
     "static/js/2.4c1c0bf0.chunk.js": "/clearingLandmines/static/js/2.4c1c0bf0.chunk.js",
     "static/js/2.4c1c0bf0.chunk.js.map": "/clearingLandmines/static/js/2.4c1c0bf0.chunk.js.map",
     "index.html": "/clearingLandmines/index.html",
-    "precache-manifest.fc406b0d917ca77577d825c4879c010a.js": "/clearingLandmines/precache-manifest.fc406b0d917ca77577d825c4879c010a.js",
+    "precache-manifest.dad92620a529db0b268ebc4dfd6eba73.js": "/clearingLandmines/precache-manifest.dad92620a529db0b268ebc4dfd6eba73.js",
     "service-worker.js": "/clearingLandmines/service-worker.js",
     "static/js/2.4c1c0bf0.chunk.js.LICENSE.txt": "/clearingLandmines/static/js/2.4c1c0bf0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.782cc7a9.js",
     "static/js/2.4c1c0bf0.chunk.js",
-    "static/js/main.01ab3b2c.chunk.js"
+    "static/js/main.7cc7a74d.chunk.js"
   ]
 }
