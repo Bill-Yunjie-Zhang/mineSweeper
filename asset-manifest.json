@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/clearingLandmines/static/js/main.ff251ee7.chunk.js",
-    "main.js.map": "/clearingLandmines/static/js/main.ff251ee7.chunk.js.map",
-    "runtime-main.js": "/clearingLandmines/static/js/runtime-main.782cc7a9.js",
-    "runtime-main.js.map": "/clearingLandmines/static/js/runtime-main.782cc7a9.js.map",
-    "static/js/2.4c1c0bf0.chunk.js": "/clearingLandmines/static/js/2.4c1c0bf0.chunk.js",
-    "static/js/2.4c1c0bf0.chunk.js.map": "/clearingLandmines/static/js/2.4c1c0bf0.chunk.js.map",
-    "index.html": "/clearingLandmines/index.html",
-    "precache-manifest.b6bd1e368fa629e46cb03877994e8c68.js": "/clearingLandmines/precache-manifest.b6bd1e368fa629e46cb03877994e8c68.js",
-    "service-worker.js": "/clearingLandmines/service-worker.js",
-    "static/js/2.4c1c0bf0.chunk.js.LICENSE.txt": "/clearingLandmines/static/js/2.4c1c0bf0.chunk.js.LICENSE.txt"
+    "main.js": "/mineSweeper/static/js/main.ac072e04.chunk.js",
+    "main.js.map": "/mineSweeper/static/js/main.ac072e04.chunk.js.map",
+    "runtime-main.js": "/mineSweeper/static/js/runtime-main.7309a529.js",
+    "runtime-main.js.map": "/mineSweeper/static/js/runtime-main.7309a529.js.map",
+    "static/js/2.4c1c0bf0.chunk.js": "/mineSweeper/static/js/2.4c1c0bf0.chunk.js",
+    "static/js/2.4c1c0bf0.chunk.js.map": "/mineSweeper/static/js/2.4c1c0bf0.chunk.js.map",
+    "index.html": "/mineSweeper/index.html",
+    "precache-manifest.2fb86672d056a26f8c786cd09f0ef918.js": "/mineSweeper/precache-manifest.2fb86672d056a26f8c786cd09f0ef918.js",
+    "service-worker.js": "/mineSweeper/service-worker.js",
+    "static/js/2.4c1c0bf0.chunk.js.LICENSE.txt": "/mineSweeper/static/js/2.4c1c0bf0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.782cc7a9.js",
+    "static/js/runtime-main.7309a529.js",
     "static/js/2.4c1c0bf0.chunk.js",
-    "static/js/main.ff251ee7.chunk.js"
+    "static/js/main.ac072e04.chunk.js"
   ]
 }
