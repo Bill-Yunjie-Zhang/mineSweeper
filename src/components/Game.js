@@ -296,6 +296,8 @@ class Game extends React.Component {
             }
             if (this.state.gameLog[arr[0]][arr[1]] === "" && (this.state.squareTaken[arr[0]][arr[1]] !== "X" || disabledBomb)) {
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
+                let num = arr[0] * 30 + arr[1]
+                document.getElementById(num.toString()).style.backgroundColor = "#f0f0f0"
                 // console.log(this.state.gameLog, this.state.squareTaken)
                 if (this.checkEqual(this.state.gameLog, this.state.squareTaken)) {
                     if (this.state.buttonText === "Restart") {
@@ -304,21 +306,19 @@ class Game extends React.Component {
                 }
                 if (this.state.squareTaken[arr[0]][arr[1]] === 0) {
                     // console.log("DoingOpenAround")
-                    let num = arr[0] * 30 + arr[1]
-                    document.getElementById(num.toString()).style.borderStyle = "inset"
                     document.getElementById(num.toString()).style.color = "transparent"
                     this.openAround(arr)
                 }
             }
             if (disabledBomb && this.state.squareTaken[arr[0]][arr[1]] === "X") {
                 let num = arr[0] * 30 + arr[1]
-                document.getElementById(num.toString()).style.borderStyle = "outset"
+                document.getElementById(num.toString()).style.backgroundColor = "#c0a6d3"
+                document.getElementById(num.toString()).style.color = "#ffffff"                
                 this.state.gameLog[arr[0]][arr[1]] = this.state.squareTaken[arr[0]][arr[1]]
             } else if (this.state.squareTaken[arr[0]][arr[1]] === "X") {
                 let num = arr[0] * 30 + arr[1]
                 // console.log(num)
                 // console.log(num.toString)
-                document.getElementById(num.toString()).style.borderStyle = "outset"
                 document.getElementById(num.toString()).style.backgroundColor = "red"
                 document.getElementById(num.toString()).style.color = "white"
                 document.getElementById(num.toString()).style.borderColor = "red"
